@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>App</title>
+	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	  <!-- Custom fonts for this template-->
+	  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
+	  <!-- Custom styles for this template-->
+	  <link href="css/sb-admin-2.css" rel="stylesheet">
+<!--===============================================================================================-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+<body>
+
+	<div id="allpage" class="limiter">
+
+	<template v-if="page === 'login'">
+		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+			<div  class="wrap-login100">
+			<form>
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+					{{ login }}
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate="Email">
+						<input class="input100" type="text" v-model="email" placeholder="Email">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" v-model="pass" placeholder="Password">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+                    
+					<div class="container-login100-form-btn">
+						<button @click="botaologin" class="login100-form-btn">
+							Login
+						</button>
+					</div>
+				</form>
+					
+			</div>
+		</div>
+	</template>
+
+	<template v-if="page === 'homepage'">
+
+		<div>
+		
+		
+		
+	<!-- Trigger the modal with a button -->
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+		<!-- Sidebar -->
+		<ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
+	
+		  <!-- Sidebar - Brand -->
+		  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+			<div class="sidebar-brand-icon rotate-n-15">
+			  <i class="fas fa-laugh-wink"></i>
+			</div>
+			<div class="sidebar-brand-text mx-3"><sup></sup></div>
+		  </a>
+	
+		  
+	
+		  <!-- Divider -->
+		  <hr class="sidebar-divider">
+	
+		  <!-- Heading -->
+
+		  <li class="nav-item">
+			<a class="nav-link" href="index.html">
+			  <i class="fas fa-fw fa-tachometer-alt"></i>
+			  <span>Home Page</span></a>
+		  </li>
+	
+		  <!-- Divider -->
+		  <hr class="sidebar-divider">
+	
+				<!-- Heading AGENTE -->
+				<div v-if="this.pageroles === this.agente ">
+				<template>
+	
+				<div class="sidebar-heading">
+				Agente
+				</div>
+		
+				
+		
+				<!-- Nav Item - Charts -->
+				<li class="nav-item">
+				<a class="nav-link" >
+					<i class="fas fa-fw fa-chart-area"></i> 
+					<button style="color:white;" >See my Projects</button></a>
+				</li>
+				<li class="nav-item">
+				<a class="nav-link"  >
+					<i class="fas fa-fw fa-chart-area"></i>
+					<button style="color:white;">See My Teams</button></a>
+				</li>
+	
+
+			</template>
+				</div>
+			<!-- Heading -->
+			<div v-if="this.pageroles === this.admin ">
+					<template>
+
+		  <div class="sidebar-heading">
+			Add
+		  </div>
+	
+		  
+	
+			<!-- Nav Item - Charts -->
+			
+		  <li class="nav-item">
+			<a class="nav-link" data-toggle="modal" data-target="#myModal">
+			  <i class="fas fa-fw fa-chart-area"></i> 
+			  <button style="color:white;">New Project</button></a>
+			</li>
+			
+		  <li class="nav-item">
+			<a class="nav-link" data-toggle="modal" data-target="#myModal2">
+			  <i class="fas fa-fw fa-chart-area"></i>
+			  <button style="color:white;">New Team</button></a>
+		  </li>
+
+
+		  <li class="nav-item">
+			<a class="nav-link" data-toggle="modal" data-target="#myModal3">
+					<i class="fas fa-fw fa-chart-area"></i>
+			  <button style="color:white;">New User</button></a>
+			</li>
+			
+
+		</template>
+			</div>
+	
+
+		<!-- Heading -->
+		<div v-if="this.pageroles === this.admin ">
+				<template>
+	  <div class="sidebar-heading">
+			VIEW
+		  </div>
+	
+		  
+	
+		  <!-- Nav Item - Charts -->
+		  <li class="nav-item">
+				<a class="nav-link">
+			  <i class="fas fa-fw fa-chart-area"></i> 
+				<button style="color:white;" @click="changetoallprojects">All Projects</button>			</a>
+		  </li>
+		  <li class="nav-item">
+				<a class="nav-link">
+			  <i class="fas fa-fw fa-chart-area"></i>
+			  <button style="color:white;" @click="changetoallteams">All Teams</button></a>
+		  </li>
+
+	
+				<li class="nav-item">
+				<a class="nav-link" >
+						<i class="fas fa-fw fa-chart-area"></i>
+					<button style="color:white;" @click="changetoallusers">All Users</button></a>
+				</li>
+			</template>
+		</div>
+
+		</ul>
+		<!-- End of Sidebar -->
+	
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+	
+		  <!-- Main Content -->
+		  <div id="content">
+	
+			<!-- Topbar -->
+			<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+	
+			  <!-- Sidebar Toggle (Topbar) -->
+			  <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+				<i class="fa fa-bars"></i>
+			  </button>
+	
+			  <!-- Topbar Navbar -->
+			  <ul class="navbar-nav ml-auto">
+	
+				<!-- Nav Item - Search Dropdown (Visible Only XS) -->
+				<li class="nav-item dropdown no-arrow d-sm-none">
+				  <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="fas fa-search fa-fw"></i>
+				  </a>
+				  <!-- Dropdown - Messages -->
+
+				</li>
+	
+
+	
+	
+				<div class="topbar-divider d-none d-sm-block"></div>
+	
+				<!-- Nav Item - User Information -->
+				<li class="nav-item dropdown no-arrow">
+				  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ hometittle }}</span>
+					
+				  </a>
+				  <!-- Dropdown - User Information -->
+
+				</li>
+	
+			  </ul>
+	
+			</nav>
+			<!-- End of Topbar -->
+	
+			<!-- Begin Page Content -->
+
+
+			<!--   -->
+
+			<template v-if="pagebody === 'mainpage'">
+			<div class="container-fluid">
+	
+			  <div class="row">
+						mainpage
+			  </div>
+	
+			
+			</div>
+		</template>
+			<!--   -->
+
+						<!--   -->
+
+						<template v-if="pagebody === 'allteams'">
+							<div class="container-fluid">
+					
+								<div class="row">
+								<div class="col-xl-3 col-md-6 mb-4">
+									<div class="card border-left-primary shadow h-100 py-2">
+									<div class="card-body">
+										<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Number of Teams</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">{{ totalteams }}</div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-calendar fa-2x text-gray-300"></i>
+										</div>
+										</div>
+									</div>
+									</div>
+								</div>
+								</div>
+					
+								<div class="row">
+										<div v-for="team in teams">
+
+
+												<div class="col">
+											<div class="card" style="width: 18rem;">
+												<div class="card-body">
+													<h5 class="card-title">Team {{ team.teamname }}</h5>
+													<h6 class="card-subtitle mb-2 text-muted">Users:</h6>
+													<div v-for="user in team.users">
+														
+													<p class="card-text">{{ user.username }}</p>
+													
+													</div><br>
+												<center>
+													<button class="btn btn-info btn-lg">Assign User</button>
+												</center>
+												</div>
+											</div><br>
+				
+										
+										</div>
+									</div>
+			
+								</div>
+							</div>
+						</template>
+							<!--   -->
+
+
+										<!--   -->
+
+			<template v-if="pagebody === 'allprojects'">
+				<div class="container-fluid">
+		
+					<div class="row">
+					<div class="col-xl-3 col-md-6 mb-4">
+						<div class="card border-left-primary shadow h-100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Number of Projects</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">{{ totalprojects }}</div>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-calendar fa-2x text-gray-300"></i>
+							</div>
+							</div>
+						</div>
+						</div>
+					</div>
+					</div>
+		
+					<div class="row">
+			
+						<div v-for="project in projects">
+
+
+								<div class="col">
+							<div class="card" style="width: 18rem;">
+								<div class="card-body">
+									<h5 class="card-title">Project {{ project.projectname }}</h5>
+									<h6 class="card-subtitle mb-2 text-muted">Teams:</h6>
+									<div v-for="team in project.teams">
+										
+									<p class="card-text">{{ team.teamname }}</p>
+									
+									</div><br>
+								<center>
+										<a class="nav-link" data-toggle="modal" data-target="#myModal4" >
+									<button class="btn btn-info btn-lg">Assign Team</button>
+									</a>
+								</center>
+								</div>
+							</div><br>
+
+						
+						</div>
+					</div>
+					</div>
+				</div>
+			</template>
+				<!--   -->
+ 
+
+							<!--   -->
+
+			<template v-if="pagebody === 'allusers'">
+				<div class="container-fluid">
+		
+					<div class="row">
+					<div class="col-xl-3 col-md-6 mb-4">
+						<div class="card border-left-primary shadow h-100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Users:</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">{{ totalusers }}</div>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-calendar fa-2x text-gray-300"></i>
+							</div>
+							</div>
+						</div>
+						</div>
+					</div>
+					</div>
+		
+					<div class="row">
+					<div class="col">
+						<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Users</h6>
+						</div>
+						<div class="card-body">
+							<div v-for="user in users" class="table-responsive">
+							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<thead>
+								<tr>
+									<th>Name</th>
+									<th>Number of Projects</th>
+								
+						
+									<th>Start date</th>
+			
+								</tr>
+								</thead>
+
+								<tbody>
+								<tr>
+
+									<th>{{ user.username }}</th>
+								
+									<th>{{ user.userprojects }}</th>
+					
+									<th>{{ user.startdate }}</th>
+							
+								</tr>
+	
+							
+								</tbody>
+							</table>
+							</div>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</template>
+				<!--   -->
+
+			<!-- /.container-fluid -->
+	
+		  </div>
+		  <!-- End of Main Content -->
+	
+		  <!-- Footer -->
+		  <footer class="sticky-footer bg-white">
+			<div class="container my-auto">
+			  <div class="copyright text-center my-auto">
+				<span> vue.js &copy; ON </span>
+				</div>
+				
+
+			</div>
+		  </footer>
+		  <!-- End of Footer -->
+	
+		</div>
+		<!-- End of Content Wrapper -->
+	
+	  </div>
+	  <!-- End of Page Wrapper -->
+	
+	  <!-- Scroll to Top Button-->
+	  <a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	  </a>
+
+
+			</div>
+
+	</template>
+
+
+
+	
+<!-- The Modals -->
+
+	
+<!-- The Modal NEW PROJECT -->
+<div class="modal" id="myModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+	
+		<!-- Modal Header -->
+		<div class="modal-header">
+			<h4 class="modal-title">New Project</h4>
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+		</div>
+
+		<form class="w3-container">
+				<center>
+
+				<br>
+				<label>{{ projectname }}</label>
+				<input v-model="projectname" class="w3-input" type="text" placeholder="My New Project" required>
+				<br>
+				<button @click="saveproject" class="btn btn-info btn-lg">Add</button>
+			
+			</center>
+
+				</form>
+				<br>
+	
+
+		
+	
+		</div>
+	</div>
+	</div>
+
+<!-- The Modal NEW TEAM -->
+<div class="modal" id="myModal2">
+	<div class="modal-dialog">
+		<div class="modal-content">
+	
+		<!-- Modal Header -->
+		<div class="modal-header">
+			<h4 class="modal-title">New Team</h4>
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+		</div>
+
+		<form class="w3-container">
+				<center>
+					<br>
+				<label>Team Name</label>
+				<input v-model="teamname" class="w3-input" type="text" value="My New Team">
+				<br>
+			
+				<button @click="saveteam" class="btn btn-info btn-lg">Add</button>
+			
+			</center>
+
+				</form>
+				<br>
+	
+
+		
+		</div>
+	</div>
+	</div>
+
+<!-- The Modal NEW USER -->
+<div class="modal" id="myModal3">
+	<div class="modal-dialog">
+		<div class="modal-content">
+	
+		<!-- Modal Header -->
+		<div class="modal-header">
+			<h4 class="modal-title">New User</h4>
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+		</div>
+
+		<form class="w3-container">
+				<center>
+				<br>
+				<label> Name </label>
+				<input v-model="name" class="w3-input" type="text" value="My New Team">
+				<br>
+
+				<label> Email</label>
+				<input v-model="email" class="w3-input" type="text" value="My New Team">
+				<br>
+
+				<label> Password</label>
+				<input v-model="pass" class="w3-input" type="text" value="My New Team">
+				<br>
+			
+				<button @click="saveuser" class="btn btn-info btn-lg">Add</button>
+			
+				</center>
+				</form>
+				<br>
+	
+
+		
+	
+		</div>
+	</div>
+</div>
+
+<div class="modal" id="myModal4">
+	<div class="modal-dialog">
+		<div class="modal-content">
+	
+		<!-- Modal Header -->
+		<div class="modal-header">
+			<h4 class="modal-title">Assign Team</h4>
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+		</div>
+
+		<form class="card-header py-3">
+			<br>
+	
+				<select class="modal-content">
+
+					<option>Yellow</option>
+					<option>Red</option>
+					<option>Blue</option>
+
+					</select>
+					<center>
+							<br>
+					<button @click="saveuser" class="btn btn-info btn-lg">Add</button>
+					</center>
+			
+					</form>
+
+				<br>
+	
+
+			
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<script src="app.js"></script>
+
+
+</body>
+</html>
