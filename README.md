@@ -1,6 +1,6 @@
 # vue-cli
 
-> A Vue.js project
+> Branch V2, With Routes
 
 ## Build Setup
 
