@@ -40,6 +40,7 @@ new Vue({
     mounted() {
     if (localStorage) {
         ls = localStorage;
+        this.initialize();
     }
 
     },
