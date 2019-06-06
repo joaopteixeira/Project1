@@ -1,7 +1,6 @@
 # vue-cli
 
-> Branch V2, With Routes
-
+> Project 1 Branch V2.0
 ## Build Setup
 
 ``` bash
