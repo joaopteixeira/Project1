@@ -2,7 +2,7 @@ new Vue({
 
     el: '#allpage',
     data:{
-    
+     
       //page:'login',
       page:'homepage',
       login:'Log In Now',
@@ -31,7 +31,10 @@ new Vue({
             { teamdate:'',teamname:'',teamusers:'',teamactive:'',
                 users:[{username:''}]}
             ],
-    
+            showTeamProject: false,
+            showTeam: false,
+            showProject: false,
+            showUser: false,
     },
 
     mounted() {
@@ -40,40 +43,120 @@ new Vue({
     }
 
     },
-      
-    
+        
     methods: {
+        toggle(type) {
+            this[`show${type}`] = !this[`show${type}`]
+        },
+        initialize() {
+            
+            var project=[{
+                
+
+            projectdate:'',projectname:'',  
+            projectusers:[ 
+                    {startdate:'',username:'',totalprojects:'',useractive:'',
+                    userprojects:[{projectname:''}]}
+                        ],projectactive:'',
+
+            teams:[
+                    { teamdate:'',
+                    teamname:'',
+                    teamactive:'',
+                        teamusers:[{username:''}]}
+                    ]
+                }];  
+
+            var team=[
+                        { teamdate:'',
+                        teamname:'',
+                        teamactive:'',
+                        teamusers:[{username:''}]}
+                        ];  
+
+            var users=[];  
+
+
+            var allprojects=[];
+            var teams=[];
+                 
+                 
+            localStorage.setItem("allprojects",JSON.stringify(allprojects));
+            localStorage.setItem("project",JSON.stringify(project));
+            localStorage.setItem("team",JSON.stringify(team));
+            localStorage.setItem("teams",JSON.stringify(teams));
+            localStorage.setItem("users",JSON.stringify(users));
+            
+            
+        },  
     
         saveproject() {
-
-            project = JSON.parse(localStorage.getItem("projects"));
-            console.log(project);
-            project.projectname.push(this.projectname);    
-            localStorage.setItem("projects",JSON.stringify(project));
+            
             
 
+            project = JSON.parse(localStorage.getItem('project'));
+            allprojects = JSON.parse(localStorage.getItem('allprojects'));
+            console.log(project);
+            project.projectname=this.projectname;
+            allprojects.push(project.projectname);
+            localStorage.setItem("allprojects",JSON.stringify(allprojects));
+            localStorage.setItem("project"+this.projectname,JSON.stringify(project));
 
+            
+            
         },
 
         newassignteam() {
 
-            ls=":"+this.projectname+":"+":"+":"+":";   
-            localStorage.setItem("project:"+this.projectname+":"+this.newteam+":",JSON.stringify(ls));
+            console.log("testo");
+            project = JSON.parse(localStorage.getItem('projectmarte'));
+            console.log(project); 
+            project.teams.teamname="yellow";
+            project.push(team);  
+            //projects.push(project);  
+            console.log(projects);  
+              
+            localStorage.setItem("projectmarte",JSON.stringify(project)); 
+
         },
   
 
         saveteam() {
             
-            ls=":"+this.teamname+":"+this.name+":"+":"+":";             
-            localStorage.setItem("team:"+this.teamname,JSON.stringify(ls));
-         
+
+            teams = JSON.parse(localStorage.getItem('teams'));
+            teams.push(this.teamname);
+            localStorage.setItem("team"+this.teamname,JSON.stringify(team));
+            localStorage.setItem("teams",JSON.stringify(teams));
+                    
+
+        },
+
+        assignuser() {
+
+            user.username;
+
+            teams = JSON.parse(localStorage.getItem('teams'));
+            team.push(user);
+            team.userprojects;
+            team.useractive=true;
+            totalteam=team.length;
+
+            teams.push(teamname=this.team);
+
+
+            localStorage.setItem("teams",JSON.stringify(teams));
+                    
+
+
         },
 
 
         saveuser() {
             
-
-            ls=":"+this.name+":"+this.pass+":"+this.email+":"+this.role+":";             
+            users = JSON.parse(localStorage.getItem('users'));
+            localStorage.setItem("users",JSON.stringify(ls));
+            ls=":"+this.name+":"+this.pass+":"+this.email+":"+this.agente+":";             
             localStorage.setItem("user:"+this.email,JSON.stringify(ls));
          
         },
@@ -129,11 +212,16 @@ new Vue({
     
         changetoallprojects(){
             this.pagebody="allprojects"
-
             db=ls
-            arrayProjects = db.split(":")
-            this.projects=arrayProjects[1]
-            this.totalprojects=arrayProjects.length
+console.log(db.getItem(this.pagebody))
+            
+            if(db.getItem(this.pagebody)) {
+                arrayProjects = db.split(":")
+                this.projects=arrayProjects[1]
+                this.totalprojects=arrayProjects.length
+            }
+            this.projects=[]
+            this.totalprojects=0
 
         },
     
@@ -156,6 +244,3 @@ new Vue({
     
     
 });
-    
-
-

@@ -6,9 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -29,8 +26,8 @@
 <!--===============================================================================================-->	
 	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/util.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
 	  <!-- Custom fonts for this template-->
 	  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 	  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -38,7 +35,8 @@
 	  <!-- Custom styles for this template-->
 	  <link href="css/sb-admin-2.css" rel="stylesheet">
 <!--===============================================================================================-->
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/vue@2.6.10/dist/vue.runtime.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
 </head>
 <body>
@@ -105,8 +103,10 @@
 		  <!-- Divider -->
 		  <hr class="sidebar-divider">
 	
-		  <!-- Heading -->
-
+			<!-- Heading -->
+			
+			<button @click="initialize" class="btn btn-info btn-lg">Initialize</button>
+			
 		  <li class="nav-item">
 			<a class="nav-link" href="index.html">
 			  <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -259,7 +259,17 @@
 			<!-- Begin Page Content -->
 
 
-			<!--   -->
+
+				<!-- routes 
+
+			<router-link to="/mainpage"> Main Page</router-link>
+			<router-link to="/allteams"> All Teams</router-link>
+			<router-link to="/allprojects"> All Projects</router-link>
+			<router-link to="/allusers"> All Users</router-link>
+ 	
+
+			<router-view></router-view>		-->
+
 
 			<template v-if="pagebody === 'mainpage'">
 			<div class="container-fluid">
@@ -270,7 +280,7 @@
 	
 			
 			</div>
-		</template>
+			</template>
 			<!--   -->
 
 						<!--   -->
@@ -365,8 +375,9 @@
 									
 									</div><br>
 								<center>
-										<a class="nav-link" data-toggle="modal" data-target="#myModal4" >
-									<button class="btn btn-info btn-lg">Assign Team</button>
+									<!--<a class="nav-link" data-toggle="modal" data-target="#myModal4" >-->
+											<a class="nav-link" >
+									<button @click="toggle('TeamProject')" class="btn btn-info btn-lg">Assign Team</button>
 									</a>
 								</center>
 								</div>
@@ -588,14 +599,14 @@
 	</div>
 </div>
 
-<div class="modal" id="myModal4">
+<div class="modal" id="myModal4" v-if="showTeamProject" style="display:block">
 	<div class="modal-dialog">
 		<div class="modal-content">
 	
 		<!-- Modal Header -->
 		<div class="modal-header">
 			<h4 class="modal-title">Assign Team</h4>
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<button type="button" class="close" @click="showTeamProject = !showTeamProject" data-dismiss="modal">&times;</button>
 		</div>
 
 		<form class="card-header py-3">
@@ -604,13 +615,13 @@
 				<select class="modal-content">
 
 					<option>Yellow</option>
-					<option>Red</option>
-					<option>Blue</option>
+					<option>Yellow</option>
+					<option>Yellow</option>
 
 					</select>
 					<center>
 							<br>
-					<button @click="saveuser" class="btn btn-info btn-lg">Add</button>
+					<button @click.prevent="newassignteam" class="btn btn-info btn-lg">AddD</button>
 					</center>
 			
 					</form>
@@ -629,9 +640,6 @@
 
 <!--===============================================================================================-->
 
-<!--===============================================================================================-->
-
-<!--===============================================================================================-->
 	<script src="js/main.js"></script>
 	<script src="app.js"></script>
 

@@ -110,11 +110,11 @@ new Vue({
 el: '#register',
 data:{
  
-  registration:'Register New Agent',
+  registration:'Register New Admin',
   name:'',
   pass:'',
   email:'',
-  role:'agente'
+  role:'admin'
 },
 
 mounted() {
@@ -127,7 +127,19 @@ mounted() {
 methods: {
 
 	save() {
-		
+		var project=[   
+                { projectdate:'',projectname:'',projectusers:[ 
+                    {startdate:'',username:'',totalprojects:'',useractive:'',
+                userprojects:[{projectname:''}]}
+            ]
+            ,projectactive:'',
+                teams:[
+                    { teamdate:'',teamname:'',teamusers:'',teamactive:'',
+                        users:[{username:''}]}
+                    ]}
+                ];  
+            localStorage.setItem("projects",JSON.stringify(project));
+
 			ls=":"+this.name+":"+this.pass+":"+this.email+":"+this.role+":";
 			
 			localStorage.setItem("user:"+this.email,JSON.stringify(ls));
