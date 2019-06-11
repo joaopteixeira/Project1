@@ -1,0 +1,255 @@
+@charset "UTF-8";
+
+:root {
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+
+@font-face {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-style: normal;
+  font-weight: 400;
+}
+
+
+.head{
+
+  width: 100%;
+  height: 80px;
+
+}
+
+.btback{
+  display: inline-grid;
+  float: left;
+  width: 12.4%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  background-color: #2A363F;
+}
+
+.btback p{
+  text-align: center;
+align-self: center;
+margin-top: 4% !important;
+}
+
+.btback:hover{
+  background-color: #007bff;
+  height: 100%;
+  cursor: pointer;
+}
+
+.logo{
+
+display: inline-grid;
+  color: white;
+  height: 100%;
+  width: 23.33%;
+  text-align: center;
+  background-color:  #007bff;
+}
+
+.logo p{
+  text-align: center;
+align-self: center;
+margin-top: 2.5%;
+}
+
+.menu{
+  width: 100%;
+  display: table;
+  height: 110vh;
+}
+
+.menu a{
+  text-decoration: none;
+  color:black;
+}
+
+.pane{
+  display: inline-block;
+  width: 33.33%;
+  background-color: #e8f4f8;
+  height: 100%;
+  text-align: center;
+  font-size: 34px;
+padding-top: 20%;
+
+
+}
+
+/*Scrollable Table*/
+.header-fixed {
+    width: 100%;
+
+}
+
+.header-fixed > thead,
+.header-fixed > tbody,
+.header-fixed > thead > tr > th,
+.header-fixed > tbody > tr > td {
+    display: block;
+
+
+}
+
+
+
+.header-fixed > tbody {
+    overflow-y: auto;
+    height: 500px;
+}
+
+.header-fixed > tbody > tr > td,
+.header-fixed > thead > tr > th {
+    width: 33.333%;
+    height: 100%;
+    float: left;
+}
+.header-fixed > tbody > tr:hover{
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+
+.pane:hover{
+
+background-color: #f0f0f0;
+cursor: pointer;
+}
+
+
+
+body {
+	background: #e8f4f8  !important;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.topo{
+
+	margin-top: 28%;
+
+}
+
+
+.wrap {
+	width:500px;
+	height: auto;
+	margin: auto;
+
+}
+.avatar {
+	width: 100%;
+	margin: auto;
+	width: 65px;
+	border-radius: 100px;
+	height: 65px;
+	background: #448ed3 ;
+	position: relative;
+	bottom: -15px;
+}
+.avatar img {
+	width: 55px;
+	height: 55px;
+	border-radius: 100px;
+	margin: auto;
+	border:3px solid #fff;
+	display: block;
+}
+.wrap input {
+  border:none;
+
+      background: #fff;
+      font-weight: 500;
+      font-size: 20px;
+      display: block;
+      height: 50px;
+      outline: none;
+      width: calc(100% - 24px);
+      margin: auto;
+      padding: 6px 12px 6px 12px;
+}
+.wrap input[type="submit"] {
+  margin-top: 5%;
+  background-color: #007bff;
+  width: calc(100% - 24px);
+  color: white;
+  border-radius: 8px;
+}
+
+.wrap input[type="submit"]:hover {
+color: #fff;
+
+background-color: #0069d9;
+border-color: #0062cc;
+cursor: pointer;
+
+}
+.bar {
+	width: calc(100% - 24px);
+	height: 1px;
+	background: #d1d1d1 ;
+  margin: auto;
+}
+
+.wrap input[type="text"] {
+
+  margin-top: 30px;
+	border-radius: 7px 7px 0px 0px ;
+}
+.wrap input[type="password"] {
+	border-radius: 0px 0px 7px 7px ;
+}
+  .forgot_link {
+	color: #83afdf ;
+	color: #83afdf;
+	text-decoration: none;
+	font-size: 11px;
+	position: relative;
+	left: 193px;
+	top: -36px;
+}
+.wrap button {
+	width: 100%;
+	border-radius: 7px;
+	background: #b6ee65;
+	text-decoration: center;
+	border: none;
+	color: #51771a;
+  margin-top:-5px;
+	padding-top: 14px;
+	padding-bottom: 14px;
+	outline: none;
+	font-size: 13px;
+	border-bottom: 3px solid #307d63;
+	cursor: pointer;
+}
+
+.img-login{
+  margin-left: 25%;
+}
+
+
+.formadicionar{
+  width: 50%;
+  margin: 0 25%;
+}
+
+.megaform{
+  width: 75%;
+  margin: 0 12.5%;
+}
+.megaform h4{
+margin-top: 5%;
+}
+.megaform label{
+margin-top: 2%;
+}
+
+.submit-btn{
+  width: 50% !important;
+}
